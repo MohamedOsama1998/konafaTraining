@@ -4,10 +4,16 @@ import SignInForm from "../forms/SignInForm";
 import SignUpForm from "../forms/SignUpForm";
 
 const Home = () => {
-  const [activity, setActivity] = useState(0);
+  const [activity, setActivity] = useState(1);
 
   return (
-    <Grid container direction="row" justify="flex-start" alignItems="stretch">
+    <Grid
+      container
+      direction="row"
+      justify="flex-start"
+      alignItems="stretch"
+      style={{ minHeight: "100vh", paddingTop: "64px" }}
+    >
       <Grid item xs={7} classes={{ root: "leftGroup " }}>
         <Typography variant="h3" classes={{ root: "titleText" }}>
           Welcome to absolutely nothing!

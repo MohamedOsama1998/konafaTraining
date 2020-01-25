@@ -1,7 +1,9 @@
 import React, { useState } from "react";
-import { TextField, withStyles, Button } from "@material-ui/core";
+import { TextField, makeStyles, Button } from "@material-ui/core";
+import { signUp } from "../../store/actions/authActions";
+import { connect } from "react-redux";
 
-const styles = theme => ({
+const useStyles = makeStyles(theme => ({
   textField: {
     marginTop: "30px",
     borderColor: "white"
@@ -9,15 +11,21 @@ const styles = theme => ({
   input: {
     color: "#c5c7c7"
   }
-});
+}));
 
 const SignUpForm = props => {
-  const { classes } = props;
+  const classes = useStyles();
 
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+
+  const handleSubmit = () => {
+    const userInfo = { email, password };
+
+    props.signUp(userInfo);
+  };
 
   return (
     <form>
@@ -74,6 +82,8 @@ const SignUpForm = props => {
         }}
       />
       <Button
+        type="submit"
+        onClick={() => handleSubmit()}
         style={{ borderColor: "#66fcf1", color: "#c5c7c7", marginTop: "30px" }}
         variant="outlined"
         fullWidth
@@ -85,4 +95,10 @@ const SignUpForm = props => {
   );
 };
 
-export default withStyles(styles)(SignUpForm);
+const mapDispatchToProps = dispatch => {
+  return {
+    signUp: userInfo => dispatch(signUp(userInfo))
+  };
+};
+
+export default connect(null, mapDispatchToProps)(SignUpForm);

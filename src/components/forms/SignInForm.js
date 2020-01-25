@@ -1,7 +1,10 @@
 import React, { useState } from "react";
-import { TextField, withStyles, Button } from "@material-ui/core";
+import { makeStyles } from "@material-ui/core/styles";
+import { signIn } from "../../store/actions/authActions";
+import { connect } from "react-redux";
+import { TextField, Button } from "@material-ui/core";
 
-const styles = theme => ({
+const useStyles = makeStyles(theme => ({
   textField: {
     marginTop: "30px",
     borderColor: "white"
@@ -9,13 +12,17 @@ const styles = theme => ({
   input: {
     color: "#c5c7c7"
   }
-});
+}));
 
 const SignInForm = props => {
-  const { classes } = props;
+  const classes = useStyles();
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const handleSubmit = () => {
+    const userInfo = { email, password };
+    props.signIn(userInfo);
+  };
 
   return (
     <form>
@@ -48,9 +55,13 @@ const SignInForm = props => {
 
       <Button
         style={{ borderColor: "#66fcf1", color: "#c5c7c7", marginTop: "30px" }}
+        type="submit"
         variant="outlined"
         fullWidth
         color="inherit"
+        onClick={() => {
+          handleSubmit();
+        }}
       >
         Sign in
       </Button>
@@ -58,4 +69,10 @@ const SignInForm = props => {
   );
 };
 
-export default withStyles(styles)(SignInForm);
+const mapDispatchToProps = dispatch => {
+  return {
+    signIn: userInfo => dispatch(signIn(userInfo))
+  };
+};
+
+export default connect(null, mapDispatchToProps)(SignInForm);

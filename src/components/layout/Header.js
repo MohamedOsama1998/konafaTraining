@@ -2,8 +2,10 @@ import React from "react";
 import { AppBar, Toolbar, Typography, IconButton } from "@material-ui/core";
 import MenuIcon from "@material-ui/icons/Menu";
 import { makeStyles } from "@material-ui/core/styles";
+import { connect } from "react-redux";
 
 import SignedOutLinks from "./SignedOutLinks";
+import SignedInLinks from "./SignedInLinks";
 
 const useStyles = makeStyles(theme => ({
   menuButton: {
@@ -14,12 +16,12 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-const Header = () => {
+const Header = props => {
   const classes = useStyles();
 
   return (
     <div>
-      <AppBar position="static">
+      <AppBar position="fixed">
         <Toolbar classes={{ root: "header" }}>
           <IconButton
             edge="start"
@@ -32,11 +34,17 @@ const Header = () => {
           <Typography variant="h6" className={classes.title}>
             KonafaHEHEXD
           </Typography>
-          {/* <SignedOutLinks /> */}
+          {props.auth ? <SignedInLinks /> : <SignedOutLinks />}
         </Toolbar>
       </AppBar>
     </div>
   );
 };
 
-export default Header;
+const mapStateToProps = state => {
+  return {
+    auth: state.firebase.auth.uid
+  };
+};
+
+export default connect(mapStateToProps)(Header);
