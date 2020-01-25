@@ -6,7 +6,37 @@ body {
   width: 100%;
 }
 
-.headerStyle {
-  background-color: black;
-  color: white;
+.header {
+  background-color: #0b0c10;
+}
+
+.leftGroup {
+  text-align: center;
+  height: 100%;
+  background-color: #0b0c10;
+}
+
+.titleText {
+  color: #45a29e;
+  padding-top: 50px;
+}
+
+.secondaryText {
+  color: #c5c7c7;
+  padding-top: 60px;
+  text-align: justify;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+.buttonGroup {
+  margin-top: 90px;
+  margin-bottom: 50px;
+  color: #c5c7c7;
+}
+
+.form {
+  text-align: center;
+  padding: 30px;
+  background-color: #1f2833;
 }

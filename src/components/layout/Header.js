@@ -19,11 +19,8 @@ const Header = () => {
 
   return (
     <div>
-      <AppBar
-        style={{ backgroundColor: "black", color: "white" }}
-        position="static"
-      >
-        <Toolbar>
+      <AppBar position="static">
+        <Toolbar classes={{ root: "header" }}>
           <IconButton
             edge="start"
             className={classes.menuButton}
@@ -35,7 +32,7 @@ const Header = () => {
           <Typography variant="h6" className={classes.title}>
             KonafaHEHEXD
           </Typography>
-          <SignedOutLinks />
+          {/* <SignedOutLinks /> */}
         </Toolbar>
       </AppBar>
     </div>
