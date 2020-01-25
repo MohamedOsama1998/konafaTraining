@@ -6,10 +6,7 @@ body {
   width: 100%;
 }
 
-.header {
-  flex-grow: 1;
-}
-
-.links {
-  text-transform: none;
+.headerStyle {
+  background-color: black;
+  color: white;
 }

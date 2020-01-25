@@ -6,9 +6,6 @@ import { makeStyles } from "@material-ui/core/styles";
 import SignedOutLinks from "./SignedOutLinks";
 
 const useStyles = makeStyles(theme => ({
-  root: {
-    flexGrow: 1
-  },
   menuButton: {
     marginRight: theme.spacing(2)
   },
@@ -21,8 +18,11 @@ const Header = () => {
   const classes = useStyles();
 
   return (
-    <div className={classes.root}>
-      <AppBar position="static">
+    <div>
+      <AppBar
+        style={{ backgroundColor: "black", color: "white" }}
+        position="static"
+      >
         <Toolbar>
           <IconButton
             edge="start"
