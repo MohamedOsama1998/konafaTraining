@@ -39,3 +39,7 @@ body {
   padding: 30px;
   background-color: #1f2833;
 }
+
+.has-error {
+  background-color: red;
+}

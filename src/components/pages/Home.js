@@ -5,7 +5,7 @@ import SignInForm from "../forms/SignInForm";
 import SignUpForm from "../forms/SignUpForm";
 
 const Home = props => {
-  const [activity, setActivity] = useState(1);
+  const [activity, setActivity] = useState(0);
 
   return (
     <Grid

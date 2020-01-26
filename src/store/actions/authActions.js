@@ -2,7 +2,7 @@ export const signIn = userInfo => {
   return (dispatch, getState, { getFirebase }) => {
     const firebase = getFirebase();
 
-    firebase
+    return firebase
       .auth()
       .signInWithEmailAndPassword(userInfo.email, userInfo.password)
       .then(() => {
@@ -18,7 +18,7 @@ export const logOut = () => {
   return (dispatch, getState, { getFirebase }) => {
     const firebase = getFirebase();
 
-    firebase
+    return firebase
       .auth()
       .signOut()
       .then(() => {
@@ -34,10 +34,10 @@ export const signUp = userInfo => {
   return (dispatch, getState, { getFirebase }) => {
     const firebase = getFirebase();
 
-    firebase
+    return firebase
       .auth()
       .createUserWithEmailAndPassword(userInfo.email, userInfo.password)
       .then(() => dispatch({ type: "SIGNUP_SUC" }))
-      .catch(err => dispatch({ type: "SIGN_UP_ERR", err }));
+      .catch(err => dispatch({ type: "SIGNUP_ERR", err }));
   };
 };
