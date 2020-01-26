@@ -3,8 +3,6 @@ import "./App.css";
 
 // Tools
 import { HashRouter as Router, Route, Switch } from "react-router-dom";
-import { Provider } from "react-redux";
-import store from "./store/store";
 
 // Pages
 import Home from "./components/pages/Home";
@@ -16,17 +14,15 @@ import Header from "./components/layout/Header";
 
 const App = () => {
   return (
-    <Provider store={store}>
-      <Router>
-        <div className="App">
-          <Header />
-          <Switch>
-            <Route exact path="/" component={Home} />
-            <Route component={NotFound} />
-          </Switch>
-        </div>
-      </Router>
-    </Provider>
+    <Router>
+      <div className="App">
+        <Header />
+        <Switch>
+          <Route exact path="/" component={Home} />
+          <Route component={NotFound} />
+        </Switch>
+      </div>
+    </Router>
   );
 };
 

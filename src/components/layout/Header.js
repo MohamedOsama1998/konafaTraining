@@ -34,7 +34,7 @@ const Header = props => {
           <Typography variant="h6" className={classes.title}>
             KonafaHEHEXD
           </Typography>
-          {props.auth ? <SignedInLinks /> : <SignedOutLinks />}
+          {props.auth ? <SignedInLinks /> : null}
         </Toolbar>
       </AppBar>
     </div>
